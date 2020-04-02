@@ -48,4 +48,9 @@ describe('RestaurantList', () => {
     expect(findByTestId(wrapper, 'restaurant', 0).text()).toBe('Sushi Place');
     expect(findByTestId(wrapper, 'restaurant', 1).text()).toBe('Pizza Place');
   });
+
+  it('displays the loading indicator while loading', () => {
+    mountWithStore({loading: true});
+    expect(wrapper.contains('[data-testid="loading-indicator"]')).toBe(true);
+  });
 });

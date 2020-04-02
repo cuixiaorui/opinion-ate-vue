@@ -1,5 +1,10 @@
 <template>
   <div>
+    <v-progress-circular
+      indeterminate
+      color="primary"
+      data-testid="loading-indicator"
+    />
     <v-list-item
       v-for="restaurant in restaurants"
       :key="restaurant.id"
