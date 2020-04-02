@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-progress-circular
+      v-if="loading"
       indeterminate
       color="primary"
       data-testid="loading-indicator"
@@ -31,6 +32,7 @@ export default {
     loadRestaurants: 'restaurants/load',
   }),
   computed: mapState({
+    loading: state => state.restaurants.loading,
     restaurants: state => state.restaurants.records,
   }),
 };
