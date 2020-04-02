@@ -20,6 +20,10 @@ describe('restaurants', () => {
     it('does not have the loading flag set', () => {
       expect(store.state.restaurants.loading).toEqual(false);
     });
+
+    it('does not have the error flag set', () => {
+      expect(store.state.restaurants.loadError).toEqual(false);
+    });
   });
 
   describe('load action', () => {
