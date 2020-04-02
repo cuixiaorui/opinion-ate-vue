@@ -7,12 +7,17 @@ describe('restaurants', () => {
   localVue.use(Vuex);
 
   describe('initially', () => {
-    it('does not have the loading flag set', () => {
-      const store = new Vuex.Store({
+    let store;
+
+    beforeEach(() => {
+      store = new Vuex.Store({
         modules: {
           restaurants: restaurants(),
         },
       });
+    });
+
+    it('does not have the loading flag set', () => {
       expect(store.state.restaurants.loading).toEqual(false);
     });
   });
