@@ -1,9 +1,10 @@
-const restaurants = api => ({
+const restaurants = (api, stateOverrides) => ({
   namespaced: true,
   state: {
     records: [],
     loading: false,
     loadError: false,
+    ...stateOverrides,
   },
   actions: {
     load({commit}) {
