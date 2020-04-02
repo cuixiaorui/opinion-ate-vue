@@ -57,6 +57,10 @@ describe('RestaurantList', () => {
       expect(wrapper.contains('[data-testid="loading-indicator"]')).toBe(false);
     });
 
+    it('does not display the error message', () => {
+      expect(wrapper.contains('[data-testid="loading-error"]')).toBe(false);
+    });
+
     it('displays the restaurants', () => {
       expect(findByTestId(wrapper, 'restaurant', 0).text()).toBe('Sushi Place');
       expect(findByTestId(wrapper, 'restaurant', 1).text()).toBe('Pizza Place');
