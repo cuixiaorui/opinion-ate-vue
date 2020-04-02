@@ -22,6 +22,7 @@ const restaurants = (api, stateOverrides) => ({
   mutations: {
     startLoading(state) {
       state.loading = true;
+      state.loadError = false;
     },
     recordLoadingError(state) {
       state.loadError = true;
