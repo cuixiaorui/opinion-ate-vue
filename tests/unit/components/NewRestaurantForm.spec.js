@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
+import flushPromises from 'flush-promises';
 import {mount, createLocalVue} from '@vue/test-utils';
 import NewRestaurantForm from '@/components/NewRestaurantForm.vue';
 
@@ -145,6 +146,31 @@ describe('NewRestaurantForm', () => {
       expect(
         wrapper.find('[data-testid="new-restaurant-server-error"]').text(),
       ).toContain('The restaurant could not be saved. Please try again.');
+    });
+  });
+
+  describe('when retrying after a server error', () => {
+    beforeEach(async () => {
+      restaurantsModule.actions.create
+        .mockRejectedValueOnce()
+        .mockResolvedValueOnce();
+
+      wrapper
+        .find('[data-testid="new-restaurant-name-field"]')
+        .setValue('Sushi Place');
+      wrapper
+        .find('[data-testid="new-restaurant-submit-button"]')
+        .trigger('click');
+      await flushPromises();
+      wrapper
+        .find('[data-testid="new-restaurant-submit-button"]')
+        .trigger('click');
+    });
+
+    it('clears the server error', () => {
+      expect(
+        wrapper.find('[data-testid="new-restaurant-server-error"]').element,
+      ).not.toBeDefined();
     });
   });
 });
