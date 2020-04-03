@@ -4,6 +4,7 @@
       placeholder="Add Restaurant"
       filled
       type="text"
+      v-model="name"
       data-testid="new-restaurant-name-field"
     />
     <v-btn
@@ -22,12 +23,17 @@ import {mapActions} from 'vuex';
 
 export default {
   name: 'NewRestaurantForm',
+  data() {
+    return {
+      name: '',
+    };
+  },
   methods: {
     ...mapActions({
       createRestaurant: 'restaurants/create',
     }),
     handleSave() {
-      this.createRestaurant();
+      this.createRestaurant(this.name);
     },
   },
 };
