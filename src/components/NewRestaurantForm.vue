@@ -29,6 +29,7 @@
           type="submit"
           color="primary"
           class="black--text"
+          block
           data-testid="new-restaurant-submit-button"
         >
           Add
