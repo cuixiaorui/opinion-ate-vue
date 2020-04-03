@@ -6,7 +6,11 @@
       type="text"
       data-testid="new-restaurant-name-field"
     />
-    <v-btn color="primary" class="black--text">
+    <v-btn
+      color="primary"
+      class="black--text"
+      data-testid="new-restaurant-submit-button"
+    >
       Add
     </v-btn>
   </form>
