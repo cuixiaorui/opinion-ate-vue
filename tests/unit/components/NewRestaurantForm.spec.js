@@ -116,4 +116,23 @@ describe('NewRestaurantForm', () => {
       ).not.toBeDefined();
     });
   });
+
+  describe('when the store action rejects', () => {
+    beforeEach(() => {
+      restaurantsModule.actions.create.mockRejectedValue();
+
+      wrapper
+        .find('[data-testid="new-restaurant-name-field"]')
+        .setValue(restaurantName);
+      wrapper
+        .find('[data-testid="new-restaurant-submit-button"]')
+        .trigger('click');
+    });
+
+    it('displays a server error', () => {
+      expect(
+        wrapper.find('[data-testid="new-restaurant-server-error"]').text(),
+      ).toContain('The restaurant could not be saved. Please try again.');
+    });
+  });
 });
