@@ -1,6 +1,11 @@
 <template>
   <form>
-    <v-text-field placeholder="Add Restaurant" filled type="text" />
+    <v-text-field
+      placeholder="Add Restaurant"
+      filled
+      type="text"
+      data-testid="new-restaurant-name-field"
+    />
     <v-btn color="primary" class="black--text">
       Add
     </v-btn>
