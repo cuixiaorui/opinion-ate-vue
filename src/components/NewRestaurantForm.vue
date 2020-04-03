@@ -7,7 +7,11 @@
     >
       Name is required.
     </v-alert>
-    <v-alert type="error" data-testid="new-restaurant-server-error">
+    <v-alert
+      v-if="serverError"
+      type="error"
+      data-testid="new-restaurant-server-error"
+    >
       The restaurant could not be saved. Please try again.
     </v-alert>
     <v-text-field
@@ -37,6 +41,7 @@ export default {
     return {
       name: '',
       validationError: false,
+      serverError: false,
     };
   },
   methods: {
@@ -50,7 +55,9 @@ export default {
           .then(() => {
             this.name = '';
           })
-          .catch(() => {});
+          .catch(() => {
+            this.serverError = true;
+          });
       } else {
         this.validationError = true;
       }
