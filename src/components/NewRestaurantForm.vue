@@ -43,6 +43,8 @@ export default {
     handleSave() {
       if (!this.name) {
         this.validationError = true;
+      } else {
+        this.validationError = false;
       }
 
       this.createRestaurant(this.name).then(() => {
