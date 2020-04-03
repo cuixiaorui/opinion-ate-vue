@@ -81,6 +81,12 @@ describe('NewRestaurantForm', () => {
         wrapper.find('[data-testid="new-restaurant-name-error"]').element,
       ).not.toBeDefined();
     });
+
+    it('does not display a server error', () => {
+      expect(
+        wrapper.find('[data-testid="new-restaurant-server-error"]').element,
+      ).not.toBeDefined();
+    });
   });
 
   describe('when empty', () => {
