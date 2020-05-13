@@ -29,10 +29,12 @@ describe('NewRestaurantForm', () => {
       },
     });
 
+    const div = document.createElement('div');
+    document.body.appendChild(div);
     wrapper = mount(NewRestaurantForm, {
       localVue,
       store,
-      attachToDocument: true,
+      attachTo: div,
     });
   });
 
