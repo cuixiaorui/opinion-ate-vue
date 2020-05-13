@@ -45,7 +45,7 @@ describe('RestaurantList', () => {
 
   it('displays the loading indicator while loading', () => {
     mountWithStore({loading: true});
-    expect(wrapper.contains('[data-testid="loading-indicator"]')).toBe(true);
+    expect(wrapper.find('[data-testid="loading-indicator"]').exists()).toBe(true);
   });
 
   describe('when loading succeeds', () => {
@@ -54,11 +54,11 @@ describe('RestaurantList', () => {
     });
 
     it('does not display the loading indicator while not loading', () => {
-      expect(wrapper.contains('[data-testid="loading-indicator"]')).toBe(false);
+      expect(wrapper.find('[data-testid="loading-indicator-blah"]').exists()).toBe(false);
     });
 
     it('does not display the error message', () => {
-      expect(wrapper.contains('[data-testid="loading-error"]')).toBe(false);
+      expect(wrapper.find('[data-testid="loading-error"]').exists()).toBe(false);
     });
 
     it('displays the restaurants', () => {
@@ -73,7 +73,7 @@ describe('RestaurantList', () => {
     });
 
     it('displays the error message', () => {
-      expect(wrapper.contains('[data-testid="loading-error"]')).toBe(true);
+      expect(wrapper.find('[data-testid="loading-error"]').exists()).toBe(true);
     });
   });
 });
