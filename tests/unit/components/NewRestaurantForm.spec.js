@@ -29,10 +29,12 @@ describe('NewRestaurantForm', () => {
       },
     });
 
+    const div = document.createElement('div');
+    document.body.appendChild(div);
     wrapper = mount(NewRestaurantForm, {
       localVue,
       store,
-      attachToDocument: true,
+      attachTo: div,
     });
   });
 
@@ -43,14 +45,14 @@ describe('NewRestaurantForm', () => {
   describe('initially', () => {
     it('does not display a validation error', () => {
       expect(
-        wrapper.find('[data-testid="new-restaurant-name-error"]').element,
-      ).not.toBeDefined();
+        wrapper.find('[data-testid="new-restaurant-name-error"]').exists(),
+      ).toBe(false);
     });
 
     it('does not display a server error', () => {
       expect(
-        wrapper.find('[data-testid="new-restaurant-server-error"]').element,
-      ).not.toBeDefined();
+        wrapper.find('[data-testid="new-restaurant-server-error"]').exists(),
+      ).toBe(false);
     });
   });
 
@@ -79,14 +81,14 @@ describe('NewRestaurantForm', () => {
 
     it('does not display a validation error', () => {
       expect(
-        wrapper.find('[data-testid="new-restaurant-name-error"]').element,
-      ).not.toBeDefined();
+        wrapper.find('[data-testid="new-restaurant-name-error"]').exists(),
+      ).toBe(false);
     });
 
     it('does not display a server error', () => {
       expect(
-        wrapper.find('[data-testid="new-restaurant-server-error"]').element,
-      ).not.toBeDefined();
+        wrapper.find('[data-testid="new-restaurant-server-error"]').exists(),
+      ).toBe(false);
     });
   });
 
@@ -125,8 +127,8 @@ describe('NewRestaurantForm', () => {
 
     it('clears the validation error', () => {
       expect(
-        wrapper.find('[data-testid="new-restaurant-name-error"]').element,
-      ).not.toBeDefined();
+        wrapper.find('[data-testid="new-restaurant-name-error"]').exists(),
+      ).toBe(false);
     });
   });
 
@@ -175,8 +177,8 @@ describe('NewRestaurantForm', () => {
 
     it('clears the server error', () => {
       expect(
-        wrapper.find('[data-testid="new-restaurant-server-error"]').element,
-      ).not.toBeDefined();
+        wrapper.find('[data-testid="new-restaurant-server-error"]').exists(),
+      ).toBe(false);
     });
   });
 });
